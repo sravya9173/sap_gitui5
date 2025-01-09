@@ -1,0 +1,106 @@
+<mvc:View xmlns:upload="sap.m.upload" controllerName="filtersort.controller.View3"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified"
+    >
+    <Page id="idpage3" title="Creating New Employee"  showNavButton="true" navButtonPress="onNavBack">
+        <content>
+       
+     <f:SimpleForm title="Enter Employee Details" editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" emptySpanL="5"
+				emptySpanM="5">
+				<f:content>
+					<Label text="Employee ID" required="true"></Label>
+					<Input id="idEmployId"></Input>
+					<Label text="Name" required="true"></Label>
+					<Input id="idEmployname"></Input>
+					<Label text="Designation" required="true"></Label>
+					<Input id="idDesign"></Input>
+					<Label text="Skill" required="true"></Label>
+					<Input id="idempSkill"></Input>
+					<Label text="Email" required="true"></Label>
+					<Input id="idEmail"></Input>
+					<Label text="Phone No." required="true"></Label>
+					<Input id="idPhone" maxLength="10"></Input>
+					<Label text="Salary" required="true"></Label>
+					<Input id="idempSalary"></Input>
+                    <Label text="Status" required="true"></Label>
+					<Input id="idStatus"></Input>
+                    <Label text="Rating" required="true"></Label>
+					<Input id="idRating"></Input>
+					<Label text="Date Of Joining" required="true"></Label>
+					<DatePicker id="idempDoj"></DatePicker>
+				</f:content>
+			</f:SimpleForm>
+
+
+<Table class="sapUiSmallMargin" width="auto" items="{prjModel>/aProjects}">
+				<headerToolbar>
+					<Toolbar >
+						<Title text="Add Projects"></Title>
+						<ToolbarSpacer ></ToolbarSpacer>
+						<Button text="Add" press="onAddRow" icon="sap-icon://add" type="Emphasized"></Button>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column >
+						<Text text="Employee Id"></Text>
+					</Column>
+					<Column >
+						<Text text="Project code"></Text>
+					</Column>
+					<Column >
+						<Text text="Client name"></Text>
+					</Column>
+					<Column >
+						<Text text="Project Name"></Text>
+					</Column>
+					<Column >
+						<Text text="Description"></Text>
+					</Column>
+					<Column >
+						<Text text="Delete"></Text>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<Input value="{prjModel>Employid}"></Input>
+							<Input value="{prjModel>Prjcode}"></Input>
+							<Input value="{prjModel>Clientname}"></Input>
+							<Input value="{prjModel>Prjname}"></Input>
+							<Input value="{prjModel>Prjdesc}"></Input>
+							<Button icon="sap-icon://delete" type="Reject" press="onDeleteRow"></Button>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		       <f:SimpleForm class="sapUiSmallMargin" width="auto" title="Upload your profile picture" editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" emptySpanL="5" emptySpanM="5">
+				<f:content>
+					 <Label text="Select your photo"></Label>
+					 <u:FileUploader id="idFileUploader" uploadUrl="/sap/opu/odata/sap/ZEMPLOYEECRUD_SRV/photoSet" sendXHR="true" useMultipart="false"
+					  change="onFileSelect" uploadComplete="onUploadComplete" ></u:FileUploader>
+					 <Button text="Upload" type="Emphasized" width="150px" press="onUploadPhoto"></Button>
+				</f:content>
+			</f:SimpleForm>
+			<upload:UploadSet  id="idUploadSet" multiple="true" instantUpload="false" uploadUrl="/sap/opu/odata/sap/ZEMPLOYEECRUD_SRV/resumeSet" uploadCompleted="onResumeUploadComplete"></upload:UploadSet>
+			<FlexBox justifyContent="End">
+				<Button text="Upload Resumes" type="Emphasized" width="150px" press="onUploadResume"></Button>
+			</FlexBox>
+
+        </content>
+        <footer>
+			<Bar>
+				<contentRight>
+				    <Button text="Reset" type="Reject" icon="sap-icon://reset" press="onPressReset"></Button>
+					<Button text="Save" press="onPressSave" type="Accept"></Button>
+					<Button text="Cancel" press="onNavBack" type="Reject"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+    </Page>
+
+
+
+       
+</mvc:View>

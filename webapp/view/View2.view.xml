@@ -1,0 +1,158 @@
+<mvc:View controllerName="filtersort.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    >
+    <Page id="idpage2" title="Selected Employee Details"  showNavButton="true" navButtonPress="onNavBack">
+        <content>
+       
+        <ObjectHeader  iconPress="onPressPhoto" imageShape="Circle" iconActive="true" icon="/sap/opu/odata/sap/ZEMPLOYEEDETAILS_SRV/photoSet('singleEmpModel>/Employid')/$value" backgroundDesign="Solid" title="{singleEmpModel>/Employname}" number="{singleEmpModel>/Salary}" numberUnit="{Currcode}">
+             <attributes>
+                <ObjectAttribute text="{singleEmpModel>/Employid}"></ObjectAttribute>
+                 <ObjectAttribute text="{singleEmpModel>/Jobdesgn}"></ObjectAttribute>
+             </attributes>
+             <statuses>
+           <ObjectStatus text="{singleEmpModel>/Status}"  state="{path:'Status',formatter:'.f.formatStatus'}"></ObjectStatus>
+             
+             </statuses>
+           </ObjectHeader>
+             <IconTabBar >
+             <items>
+                <IconTabFilter icon="sap-icon://information">
+                   <f:SimpleForm editable="false">
+                     <f:content>
+                        <Label  text="Employee Id"></Label>
+                        <Text  text="{singleEmpModel>/Employid}"  id="idEmpid"></Text>
+                         <Label  text="Name"></Label>
+                        <Text  text="{singleEmpModel>/Employname}"></Text>
+                         <Label  text="Designation"></Label>
+                        <Text  text="{singleEmpModel>/Jobdesgn}"></Text>
+                         <Label  text="Skill"></Label>
+                        <Text  text="{singleEmpModel>/Skill}"></Text>
+                         <Label  text="Email Id"></Label>
+                        <Text  text="{singleEmpModel>/Emailid}"></Text>
+                         <Label  text="Phone No."></Label>
+                        <Text  text="{singleEmpModel>/Phone}"></Text>
+                        <Label  text="Salary"></Label>
+                        <Text  text="{singleEmpModel>/Salary}"></Text>
+                        <Label  text="Status"></Label>
+                        <Text  text="{singleEmpModel>/Status}"></Text>
+                        <Label  text="Rating"></Label>
+                        <Text  text="{singleEmpModel>/Rating}"></Text>
+                         <Label  text="Date of joining"></Label>
+                        <Text  text="{path:'singleEmpModel>/Doj',type:'sap.ui.model.type.Date',formatOptions:{pattern:'dd-MM-yyyy'}}"></Text>
+
+                      
+                     </f:content>
+                   
+                   </f:SimpleForm>
+                
+                </IconTabFilter>
+
+                  <IconTabFilter icon="sap-icon://capital-projects">
+                        <Table items="{singleEmpModel>/toproject/results}">
+                            <columns>
+                                <Column>
+                                    <Text text="Employee ID"></Text>
+                                </Column>
+                                <Column>
+                                    <Text text="Project Code"></Text>
+                                </Column>
+                                <Column>
+                                    <Text text="Client name"></Text>
+                                </Column>
+                                <Column>
+                                    <Text text="Prject Name"></Text>
+                                </Column>
+                                <Column>
+                                    <Text text="Prject Description"></Text>
+                                </Column>
+                            </columns>
+                            <items>
+                              <ColumnListItem>
+									<cells>
+										<Text text="{singleEmpModel>Employid}"></Text>
+										<Text text="{singleEmpModel>Prjcode}"></Text>
+										<Text text="{singleEmpModel>Clientname}"></Text>
+										<Text text="{singleEmpModel>Prjname}"></Text>
+										<Text text="{singleEmpModel>Prjdesc}"></Text>
+									</cells>
+								</ColumnListItem>
+                            </items>
+
+                        </Table>
+                    </IconTabFilter>
+               
+
+                  <IconTabFilter icon="sap-icon://attachment">
+                        <Table items="{singleEmpModel>/toresume/results}">
+                            <columns>
+                                <Column>
+                                    <Text text="Employee ID"></Text>
+                                </Column>
+                                <Column>
+                                    <Text text="FileName"></Text>
+                                </Column>
+                               
+                            </columns>
+                            <items>
+                              <ColumnListItem>
+									<cells>
+										<Text text="{singleEmpModel>Employid}"></Text>
+										<Text text="{singleEmpModel>FileName}"></Text>
+									 <Button type="Reject" icon="sap-icon://download" press="onDowndloadResume"/>
+									</cells>
+								</ColumnListItem>
+                            </items>
+
+                        </Table>
+                    </IconTabFilter>
+             </items>
+           
+           </IconTabBar>
+  <!-- <ObjectHeader backgroundDesign="Solid" title="{Employname}" number="{Salary}" numberUnit="{Currcode}">
+             <attributes>
+                <ObjectAttribute text="{Employid}"></ObjectAttribute>
+                 <ObjectAttribute text="{Jobdesgn}"></ObjectAttribute>
+             </attributes>
+             <statuses>
+           <ObjectStatus text="{Status}"  state="{path:'Status',formatter:'.f.formatStatus'}"></ObjectStatus>
+             
+             </statuses>
+           </ObjectHeader>
+             <IconTabBar >
+             <items>
+                <IconTabFilter icon="sap-icon://information">
+                   <f:SimpleForm editable="false">
+                     <f:content>
+                        <Label  text="Employee Id"></Label>
+                        <Text  text="{Employid}"></Text>
+                         <Label  text="Name"></Label>
+                        <Text  text="{Employname}"></Text>
+                         <Label  text="Designation"></Label>
+                        <Text  text="{Jobdesgn}"></Text>
+                         <Label  text="Skill"></Label>
+                        <Text  text="{Skill}"></Text>
+                         <Label  text="Email Id"></Label>
+                        <Text  text="{Emailid}"></Text>
+                         <Label  text="Phone No."></Label>
+                        <Text  text="{Phone}"></Text>
+                         <Label  text="Date of joining"></Label>
+                        <Text  text="{path:'Doj',type:'sap.ui.model.type.Date',formatOptions:{pattern:'dd-MM-yyyy'}}"></Text>
+
+                      
+                     </f:content>
+                   
+                   </f:SimpleForm>
+                
+                </IconTabFilter>
+               
+             </items>
+           
+           </IconTabBar> -->
+
+
+
+        </content>
+    </Page>
+</mvc:View>

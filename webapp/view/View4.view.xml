@@ -1,0 +1,49 @@
+<mvc:View controllerName="filtersort.controller.View4"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    >
+    <Page id="idpage4" title="Update Employee"  showNavButton="true" navButtonPress="onNavBack">
+        <content>
+       
+     <f:SimpleForm title="Edit Employee Details" editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" emptySpanL="5"
+				emptySpanM="5">
+				<f:content>
+					<Label text="Employee ID" required="true"></Label>
+					<Input id="idEmployeeId" value="{editEmpModel>/Employid}"></Input>
+					<Label text="Name" required="true"></Label>
+					<Input id="idEmployeename" value="{editEmpModel>/Employname}"></Input>
+					<Label text="Designation" required="true"></Label>
+					<Input id="idemployeeDesign" value="{editEmpModel>/Jobdesgn}"></Input>
+					<Label text="Skill" required="true"></Label>
+					<Input id="idemployeeSkill" value="{editEmpModel>/Skill}"></Input>
+					<Label text="Email" required="true"></Label>
+					<Input id="idemployeeEmail" value="{editEmpModel>/Emailid}"></Input>
+					<Label text="Phone No." required="true"></Label>
+					<Input id="idemployeePhone" value="{editEmpModel>/Phone}"></Input>
+					<Label text="Salary" required="true"></Label>
+					<Input id="idemployeeSalary" value="{editEmpModel>/Salary}"></Input>
+                    <Label text="Status" required="true"></Label>
+					<Input id="idemployeeStatus" value="{editEmpModel>/Status}"></Input>
+                    <Label text="Rating" required="true"></Label>
+					<Input id="idemployeeRating" value="{editEmpModel>/Rating}"></Input>
+					<Label text="Date Of Joining" required="true"></Label>
+					<DatePicker id="idemployeeDoj" dateValue="{editEmpModel>/Doj}"></DatePicker>
+				</f:content>
+			</f:SimpleForm>
+
+        </content>
+        <footer>
+			<Bar>
+				<contentRight>
+					<Button text="Save" press="onPressSave" type="Accept"></Button>
+					<Button text="Cancel" press="onNavBack" type="Reject"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+    </Page>
+
+
+
+       
+</mvc:View>

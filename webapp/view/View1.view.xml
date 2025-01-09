@@ -1,0 +1,136 @@
+<mvc:View controllerName="filtersort.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+     xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified">
+    <Page id="page" title="EMPLOYEE DETAILS">
+        <content>
+        <Panel headerText="Search Employees" expandable="true" expanded="false">
+                <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="4" emptySpanL="4" emptySpanM="6" columnsL="3" columnsM="3">
+                    <f:content>
+                    <core:Title text="Filter"></core:Title>
+                        <Label text="Employee ID"></Label>
+                        <Input id="idEmpId"></Input>
+                        <Label text="Name"></Label>
+                        <Input id="idName"></Input>
+                        <Label text="Designation"></Label>
+                        <Input id="idDesig"></Input>
+                        <Label text="Skill"></Label>
+                        <Input id="idSkill"></Input>
+                        <Label text="Date of joining"></Label>
+                        <DatePicker id="idDoj"></DatePicker>
+ <Label text="Salary"></Label>
+            <Select id="idSalaryOpr">
+              <items>
+                <core:Item text="EQUAL" key="EQ"></core:Item>
+                <core:Item text="GREATER THAN" key="GT"></core:Item>
+                <core:Item text="LESS THAN" key="LT"></core:Item>
+                <core:Item text="GREATER THAN OR EQUAL" key="GE"></core:Item>
+                <core:Item text="LESS THAN OR EQUAL" key="LE"></core:Item>
+              </items>
+            </Select>
+            <Input id="idSalary"></Input>
+ <core:Title text="Sort"></core:Title>
+            <Label text="Sort Field"></Label>
+            <ComboBox id="idSortField">
+              <items>
+                <core:Item text="Employee Id" key="Employid"></core:Item>
+                <core:Item text="Name" key="Employname"></core:Item>
+                <core:Item text="Designation" key="Jobdesgn"></core:Item>
+                <core:Item text="Skill" key="Skill"></core:Item>
+                <core:Item text="Salary" key="Salary"></core:Item>
+                <core:Item text="Date Of Joining" key="Doj"></core:Item>
+              </items>
+            </ComboBox>
+            <Label text="Sort Order"></Label>
+            <RadioButtonGroup id="idSortOrder" columns="2" selectedIndex="-1">
+              <buttons>
+                <RadioButton text="Ascending"></RadioButton>
+                <RadioButton text="Descending"></RadioButton>
+              </buttons>
+            </RadioButtonGroup>
+
+                         <core:Title text="Group"></core:Title>
+            <Label text="Group Field"></Label>
+            <ComboBox id="idGroupField">
+              <items>
+                <core:Item text="Designation" key="Jobdesgn"></core:Item>
+                <core:Item text="Skill" key="Skill"></core:Item>
+              </items>
+            </ComboBox>
+            <Label text="Group Order"></Label>
+            <RadioButtonGroup id="idGroupOrder" columns="2" selectedIndex="-1">
+              <buttons>
+                <RadioButton text="Ascending"></RadioButton>
+                <RadioButton text="Descending"></RadioButton>
+              </buttons>
+            </RadioButtonGroup>
+
+                    </f:content>
+                </f:SimpleForm>
+                <FlexBox justifyContent="End">
+                    <Button text="Go" type="Accept" icon="sap-icon://accept" press="onPressGo"></Button>
+                    <Button text="Reset" type="Reject" icon="sap-icon://reset" press="onPressReset" class="sapUiTinyMarginBegin"></Button>
+
+                </FlexBox>
+
+            </Panel>
+
+            <Table id="idTable" items="{empJson>/results}" mode="SingleSelectLeft">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="Employee Table"/>
+                        <ToolbarSpacer ></ToolbarSpacer>
+                        <Button text="Create New Employee" icon="sap-icon://add" type="Emphasized" press="onPressCreate"></Button>
+                    <Button text="Edit Employee" icon="sap-icon://edit" type="Emphasized" press="onPressEdit"></Button>
+                     <Button text="Delete Employee" icon="sap-icon://delete" type="Emphasized" press="onPressDelete"></Button>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="S No."/>
+                    </Column>
+                    <Column >
+                        <Text text="Employee Id"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="Employee name"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="Design"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="Skill"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="EmailId"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="Phone"></Text>
+                    </Column>
+                    <Column >
+                        <Text text="DOJ"></Text>
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem type="Active" press="onPressRow">
+                        <cells>
+                            <Text text="{empJson>SNo}"/>
+                            <Text text="{empJson>Employid}"></Text>
+                            <Text text="{empJson>Employname}"></Text>
+                            <Text text="{empJson>Jobdesgn}"></Text>
+                              <ObjectStatus text="{empJson>Skill}" state="{path:'empJson>Skill',formatter:'.f.formatSkill'}"></ObjectStatus>
+                            <!-- <Text text="{empJson>Skill}"></Text> -->
+                            <Text text="{empJson>Emailid}"></Text>
+                            <Text text="{empJson>Phone}"></Text>
+                            <Text text="{path:'empJson>Doj',type:'sap.ui.model.type.Date',formatOptions:{pattern:'dd-MM-yyyy'} }"></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

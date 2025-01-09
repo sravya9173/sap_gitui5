@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZEMPLOYEECRUD_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="employee" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Employid"/>
+                </Key>
+                <Property Name="Employid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="EMPLOYID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Employname" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="EMPLOYNAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Jobdesgn" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="JOBDESGN" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Skill" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="SKILL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Emailid" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="EMAILID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Phone" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="PHONE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Salary" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:unicode="false" sap:label="salary" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="STATUS" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rating" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="RATING" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Doj" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="DOJ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="toresume" Relationship="ZEMPLOYEECRUD_SRV.employeetoresume" FromRole="FromRole_employeetoresume" ToRole="ToRole_employeetoresume"/>
+                <NavigationProperty Name="toproject" Relationship="ZEMPLOYEECRUD_SRV.EmployeeToProject" FromRole="FromRole_EmployeeToProject" ToRole="ToRole_EmployeeToProject"/>
+            </EntityType>
+            <EntityType Name="project" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Employid"/>
+                    <PropertyRef Name="Prjcode"/>
+                </Key>
+                <Property Name="Employid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="EMPLOYID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Prjcode" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="PRJCODE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Clientname" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="CLIENTNAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Prjname" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="PRJNAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Prjdesc" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="PRJDESC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="photo" m:HasStream="true" sap:is-thing-type="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Employid"/>
+                </Key>
+                <Property Name="Employid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="EMPLOYID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filename" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="FILENAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filetype" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="FILETYPE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filecontent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Binary String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="resume" m:HasStream="true" sap:is-thing-type="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Employid"/>
+                </Key>
+                <Property Name="Employid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="EMPLOYID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filename" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="FILENAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filetype" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="FILETYPE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filecontent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Binary String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="employeetoresume" sap:content-version="1">
+                <End Type="ZEMPLOYEECRUD_SRV.employee" Multiplicity="1" Role="FromRole_employeetoresume"/>
+                <End Type="ZEMPLOYEECRUD_SRV.resume" Multiplicity="*" Role="ToRole_employeetoresume"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_employeetoresume">
+                        <PropertyRef Name="Employid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_employeetoresume">
+                        <PropertyRef Name="Employid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EmployeeToProject" sap:content-version="1">
+                <End Type="ZEMPLOYEECRUD_SRV.employee" Multiplicity="1" Role="FromRole_EmployeeToProject"/>
+                <End Type="ZEMPLOYEECRUD_SRV.project" Multiplicity="*" Role="ToRole_EmployeeToProject"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_EmployeeToProject">
+                        <PropertyRef Name="Employid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_EmployeeToProject">
+                        <PropertyRef Name="Employid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZEMPLOYEECRUD_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="employeeSet" EntityType="ZEMPLOYEECRUD_SRV.employee" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="projectSet" EntityType="ZEMPLOYEECRUD_SRV.project" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="photoSet" EntityType="ZEMPLOYEECRUD_SRV.photo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="resumeSet" EntityType="ZEMPLOYEECRUD_SRV.resume" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="EmployeeToProjectSet" Association="ZEMPLOYEECRUD_SRV.EmployeeToProject" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="employeeSet" Role="FromRole_EmployeeToProject"/>
+                    <End EntitySet="projectSet" Role="ToRole_EmployeeToProject"/>
+                </AssociationSet>
+                <AssociationSet Name="employeetoresumeSet" Association="ZEMPLOYEECRUD_SRV.employeetoresume" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="employeeSet" Role="FromRole_employeetoresume"/>
+                    <End EntitySet="resumeSet" Role="ToRole_employeetoresume"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://s4hana.ides.com:9222/sap/opu/odata/sap/ZEMPLOYEECRUD_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://s4hana.ides.com:9222/sap/opu/odata/sap/ZEMPLOYEECRUD_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
